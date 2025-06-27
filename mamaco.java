@@ -12,9 +12,7 @@ public class mamaco {
     }
 
     public static void main(String[] args) {
-        int n, x, y, u, v, xf = 0, yf = 0, uf = 0, vf = 0, cnt = 0;
-        String nn = "";
-        boolean ctrl = false;
+        int n, x, y, u, v, xf = -10000, yf = 10000, uf = 10000, vf = -10000, cnt = 0;
         while (true) {
             do {
                 n = SC.nextInt();
@@ -29,28 +27,17 @@ public class mamaco {
                 v = lerCoordenadas();
                 if (x > xf) {
                     xf = x;
-                }
-                if (y < yf) {
+                } if (y < yf) {
                     yf = y;
-                }
-                if (u < uf) {
+                } if (u < uf) {
                     uf = u;
-                }
-                if (v > vf) {
+                } if (v > vf) {
                     vf = v;
-                }
-                if (x > uf && y > vf) {
-                    nn = "nenhum";
-                    ctrl = true;
-                }
-                if (u < xf || v < yf) {
-                    nn = "nenhum";
-                    ctrl = true;
                 }
             }
             cnt++;
-            if (ctrl) {
-                System.out.println(nn);
+            if (xf > uf || yf < vf) {
+                System.out.printf("Teste %d\nnenhum\n\n", cnt);
             } else {
                 System.out.printf("Teste %d\n%d %d %d %d\n", cnt, xf, yf, uf, vf);
             }
