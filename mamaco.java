@@ -1,45 +1,43 @@
 import java.util.Scanner;
 
 public class mamaco {
+
     final static Scanner SC = new Scanner(System.in);
 
-    public static int lerCoordenadas() {
-        int valor;
-        do {
-            valor = SC.nextInt();
-        } while (valor < -10000 || valor > 10000);
-        return valor;
-    }
-
     public static void main(String[] args) {
-        int n, x, y, u, v, xf = -10000, yf = 10000, uf = 10000, vf = -10000, cnt = 0;
+        int n, x, y, u, v, xfinal = -10000, yfinal = 10000, ufinal = 10000, vfinal = -10000, contTeste = 0;
+    
         while (true) {
-            do {
-                n = SC.nextInt();
-            } while (n < 0 || n > 10000);
+
+            n = SC.nextInt();
+            
             if (n == 0) {
                 break;
             }
-            for (int c = 0; c < n; c++) {
-                x = lerCoordenadas();
-                y = lerCoordenadas();
-                u = lerCoordenadas();
-                v = lerCoordenadas();
-                if (x > xf) {
-                    xf = x;
-                } if (y < yf) {
-                    yf = y;
-                } if (u < uf) {
-                    uf = u;
-                } if (v > vf) {
-                    vf = v;
+            
+            for (int i = 0; i < n; i++) {
+            
+                x = SC.nextInt();
+                y = SC.nextInt();
+                u = SC.nextInt();
+                v = SC.nextInt();
+            
+                if (x >= xfinal || y <= yfinal) {
+                    xfinal = x;
+                    yfinal = y;
+                }
+                if (u <= ufinal || v >= vfinal) {
+                    ufinal = u;
+                    vfinal = v;
                 }
             }
-            cnt++;
-            if (xf > uf || yf < vf) {
-                System.out.printf("Teste %d\nnenhum\n\n", cnt);
+
+            contTeste++;
+            
+            if (xfinal > ufinal && yfinal < vfinal) {
+                System.out.printf("Teste %d\nnenhum\n\n", contTeste);
             } else {
-                System.out.printf("Teste %d\n%d %d %d %d\n", cnt, xf, yf, uf, vf);
+                System.out.printf("Teste %d\n%d %d %d %d\n\n", contTeste, xfinal, yfinal, ufinal, vfinal);
             }
         }
     }
