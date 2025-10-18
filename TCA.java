@@ -5,6 +5,7 @@ public class TCA {
 
     static int cmdDoPlayer;
     static boolean ctrl;
+    static Personagem player = new Personagem();
 
     static void receberComando(int max) {
         ctrl = true;
@@ -110,6 +111,8 @@ public class TCA {
         System.out.println("Focado em defesa e ataque.");
         System.out.println("Vida: 25");
         System.out.println("Dano: 2 ~ 6");
+        System.out.println("Defesa: 2");
+        System.out.println("Arma: espada e escudo - +1 atk, +1 def");
         System.out.println("Passiva: fortificação - recebe menos dano as vezes.");
         System.out.println("Abilidade: bloqueio - chance de não receber dano.");
         System.out.printf("\n\n");
@@ -117,6 +120,22 @@ public class TCA {
         System.out.printf("Voltar e olhar outro bau.\t\t[2]");
         System.out.printf("\n\n\n");
         System.out.println("-------------------------------------------------------------------------------------------------");
+
+        receberComando(2);
+
+        switch (cmdDoPlayer) {
+            case 1:
+                player.vida = 25;
+                player.dano = 6;
+                player.defesa = 2;
+                player.arma[0] = true;
+                player.classe[0] = true;
+
+                break;
+        
+            case 2:
+                baus();
+        }
     }
 
     public static void main(String[] args) {
@@ -150,5 +169,4 @@ public class TCA {
     }
 }
 
-// del TCA.class; javac TCA.java; java TCA
-// rm TCA.class && javac TCA.java && java TCA
+// javac TCA.java; java TCA
